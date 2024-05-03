@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:footballnews/MatchResultsScreen.dart';
 import 'package:footballnews/NewsListScreen.dart';
 import 'package:footballnews/VideoPlayerScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,7 +34,7 @@ class BottomNavigationExample extends StatefulWidget {
 class _BottomNavigationExampleState extends State<BottomNavigationExample> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
-    HomePage(),
+    MatchResultsScreen(),
     NewsListScreen(),
     VideoPlayerScreen(),
   ];
@@ -73,11 +74,3 @@ class _BottomNavigationExampleState extends State<BottomNavigationExample> {
   }
 }
 
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Home Page'),
-    );
-  }
-}

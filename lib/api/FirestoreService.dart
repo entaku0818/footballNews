@@ -1,24 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:footballnews/model/match_result.dart';
+
 
 class FirestoreService {
-  final CollectionReference _usersCollection = FirebaseFirestore.instance.collection('users');
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  // ユーザー一覧を取得するメソッド
-  Future<List<Map<String, dynamic>>> getUsers() async {
-    List<Map<String, dynamic>> userList = [];
-
-    try {
-      await _usersCollection.get().then((QuerySnapshot querySnapshot) {
-        for (var doc in querySnapshot.docs) {
-          Map<String, dynamic> user = doc.data() as Map<String, dynamic>;
-          user['id'] = doc.id; // 必要に応じてドキュメントIDも追加
-          userList.add(user);
-        }
-      });
-      return userList;
-    } catch (e) {
-      print("Failed to get users: $e");
-      return []; // エラー発生時は空のリストを返す
-    }
+  Stream<List<MatchResult>> fetchMatchResults() {
+    return _db.collection('matchResults').doc('2023').snapshots().map(
+      (snapshot) {
+        var data = snapshot.data();
+        var fixtures = data?['fixtures'] as List<dynamic>?;
+        return fixtures?.map((f) => MatchResult.fromJson(f as Map<String, dynamic>)).toList() ?? [];
+      },
+    );
   }
 }

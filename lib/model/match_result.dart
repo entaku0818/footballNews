@@ -8,6 +8,12 @@ class MatchResult with _$MatchResult {
   factory MatchResult({
     required String homeTeam,
     required String awayTeam,
+    int? homeScore,  // nullを許容
+    int? awayScore,  // nullを許容
+    required String homeTeamLogo,
+    required String awayTeamLogo,
+    int? duration,   // nullを許容
+    required String kickoffTime,
   }) = _MatchResult;
 
   factory MatchResult.fromJson(Map<String, dynamic> json) => _$MatchResultFromJson(json);

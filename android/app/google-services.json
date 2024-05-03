@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "981423300181",
+    "project_id": "the-pitch-post",
+    "storage_bucket": "the-pitch-post.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981423300181:android:4b7520b86ff5dc716cfedc",
+        "android_client_info": {
+          "package_name": "com.example.footballnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981423300181-rf1biu6i4ug6q92srp12r2sijjvejg13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR1gk-QuuzDPCfxUIY6RjUHt6bj44L6eg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981423300181-rf1biu6i4ug6q92srp12r2sijjvejg13.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981423300181-0a328l3ionmoeaft7aiv9m7d1n9rt7fq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.footballnews"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

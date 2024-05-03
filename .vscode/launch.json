@@ -6,6 +6,12 @@
     "configurations": [
 
         {
+            "name": "Flutter (iOS)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "00008120-000169121AA0C01E"
+        },
+        {
             "name": "Flutter (Pixel8)",
             "request": "launch",
             "type": "dart",

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:footballnews/model/match_result.dart';
+import 'package:footballnews/model/sport_news.dart';
 
 
 class FirestoreService {
@@ -13,5 +14,13 @@ class FirestoreService {
         return fixtures?.map((f) => MatchResult.fromJson(f as Map<String, dynamic>)).toList() ?? [];
       },
     );
+  }
+
+  Stream<List<SportNews>> fetchSportsNews() {
+    return _db.collection('books').snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return SportNews.fromJson(doc.data() as Map<String, dynamic>);
+      }).toList();
+    });
   }
 }

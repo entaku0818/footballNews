@@ -8,7 +8,7 @@ class NewsListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<SportNews>>(
-      stream: _firestoreService.fetchSportsNews(), // Fetching news from Firestore
+      stream: _firestoreService.fetchSportsNews(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
@@ -23,16 +23,32 @@ class NewsListScreen extends StatelessWidget {
               return Card(
                 elevation: 2,
                 margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: ListTile(
-                  title: Text(
-                    news.title,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text('Tap to read more'),
-                  onTap: () {
-                    // Navigate to news detail screen
-
+                child: InkWell(
+                  onTap: ()  {
                   },
+                  child: Column(
+                    children: <Widget>[
+                      news.imageUrl.isNotEmpty ? Image.network(news.imageUrl) : SizedBox(),
+                      ListTile(
+                        title: Text(
+                          news.title,
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Text('Tap to read more'),
+                        isThreeLine: true,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Source: ${news.sourceSite}', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic)),
+                            Text(news.createdAt.toString(), style: TextStyle(fontSize: 12, color: Colors.grey)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

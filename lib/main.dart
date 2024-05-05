@@ -4,6 +4,8 @@ import 'package:footballnews/NewsListScreen.dart';
 import 'package:footballnews/VideoPlayerScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 void main() async{
 WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +51,7 @@ class _BottomNavigationExampleState extends State<BottomNavigationExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bottom Navigation Example'),
+        title: const Text('Football Mobile'),
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -57,14 +59,14 @@ class _BottomNavigationExampleState extends State<BottomNavigationExample> {
         onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+          icon: SvgPicture.asset('assets/soccer_field_icon.svg', width: 28, height: 28, color: _currentIndex == 0 ? Colors.blueAccent : Colors.black54, ),  
+            label: 'Match',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.article),
             label: 'News',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.video_library),
             label: 'Video Player',
           ),

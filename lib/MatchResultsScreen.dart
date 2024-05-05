@@ -11,9 +11,6 @@ class MatchResultsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Match Results'),
-      ),
       body: StreamBuilder<List<MatchResult>>(
         stream: _firestoreService.fetchMatchResults(),
         builder: (context, snapshot) {

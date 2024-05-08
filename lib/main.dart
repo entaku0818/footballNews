@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:footballnews/MatchResultsScreen.dart';
 import 'package:footballnews/NewsListScreen.dart';
-import 'package:footballnews/VideoPlayerScreen.dart';
+import 'package:footballnews/VideoGridScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,7 +38,7 @@ class _BottomNavigationExampleState extends State<BottomNavigationExample> {
   final List<Widget> _pages = [
     MatchResultsScreen(),
     NewsListScreen(),
-    VideoPlayerScreen(),
+    VideoGridScreen(),
   ];
 
   void _onItemTapped(int index) {

@@ -23,12 +23,12 @@ class VideoGridScreen extends StatelessWidget {
           }
 
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),  // 横のパディングを設定
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),  // 横のパディングを設定
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1, // 一行に表示するアイテム数
                 crossAxisSpacing: 4.0, // 横の間隔
-                mainAxisSpacing: 4.0,  // 縦の間隔
+                mainAxisSpacing: 16.0,  // 縦の間隔
               ),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {

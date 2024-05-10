@@ -11,9 +11,6 @@ class VideoGridScreen extends StatelessWidget {
     final FirestoreService firestoreService = FirestoreService();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('YouTube Video Grid'),
-      ),
       body: StreamBuilder<List<YouTubeVideo>>(
         stream: firestoreService.fetchYouTubeVideos(),
         builder: (context, snapshot) {

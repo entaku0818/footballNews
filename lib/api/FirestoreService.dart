@@ -17,13 +17,16 @@ class FirestoreService {
     );
   }
 
-  Stream<List<SportNews>> fetchSportsNews() {
-    return _db.collection('books').snapshots().map((snapshot) {
+Stream<List<SportNews>> fetchSportsNews() {
+  return _db.collection('books') 
+    .orderBy('createdAt', descending: true)  // 'score'フィールドで降順に並べ替え
+    .snapshots()
+    .map((snapshot) {
       return snapshot.docs.map((doc) {
         return SportNews.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
     });
-  }
+}
 
   Stream<List<YouTubeVideo>> fetchYouTubeVideos() {
     return _db.collection('youtubeVideos').snapshots().map((snapshot) {

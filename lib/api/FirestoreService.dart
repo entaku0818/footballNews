@@ -19,7 +19,7 @@ class FirestoreService {
 
 Stream<List<SportNews>> fetchSportsNews() {
   return _db.collection('books') 
-    .orderBy('createdAt', descending: true)  // 'score'フィールドで降順に並べ替え
+    .orderBy('createdAt', descending: true)  
     .snapshots()
     .map((snapshot) {
       return snapshot.docs.map((doc) {

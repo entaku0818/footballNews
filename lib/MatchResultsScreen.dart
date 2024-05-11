@@ -29,11 +29,12 @@ class _MatchResultsScreenState extends State<MatchResultsScreen> with SingleTick
     });
   }
 
-  List<MatchResult> filterResultsByMonth(int month) {
+  List<MatchResult> filterResultsByMonth(int monthIndex) {
     if (allResults == null) return [];
+    int month = (monthIndex + 7) % 12 + 1; // 8月からカウントし、月のインデックスを調整
     return allResults!.where((result) {
       var date = DateTime.parse(result.kickoffTime);
-      return date.month == month + 1;  // DateTime.monthは1から始まるので+1します
+      return date.month == month;
     }).toList();
   }
 
@@ -46,11 +47,16 @@ class _MatchResultsScreenState extends State<MatchResultsScreen> with SingleTick
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: _months.map((month) => Tab(text: month)).toList(),
-          isScrollable: true,
+     appBar: AppBar(
+        title: Text('Match Results'),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),  // TabBarの高さをAppBarの高さに合わせて調整
+          child: TabBar(
+            controller: _tabController,
+            indicatorSize: TabBarIndicatorSize.label,  // タブのラベル幅にインディケータを合わせる
+            tabs: _months.map((month) => Tab(text: month)).toList(),
+            isScrollable: true,
+          ),
         ),
       ),
       body: TabBarView(

@@ -50,9 +50,6 @@ class _BottomNavigationExampleState extends State<BottomNavigationExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Football Mobile'),
-      ),
       body: IndexedStack(
         index: _currentIndex,
         children: _pages,

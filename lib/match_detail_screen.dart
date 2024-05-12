@@ -26,23 +26,75 @@ class MatchDetailScreen extends StatelessWidget {
           }
           final statistics = snapshot.data ?? [];
           if (statistics.isEmpty) {
-            return Center(child: Text('Error: No statistics found.'));
+            return Center(child: Text('No statistics found.'));
           }   
-          return ListView.builder(
-            itemCount: statistics.length,
-            itemBuilder: (context, index) {
-              final stat = statistics[index];
-              return ListTile(
-                title: Text(stat.teamName),
-                subtitle: Text('Team ID: ${stat.teamId}'),
-                trailing: Column(
-                  children: stat.statistics.map((s) => Text('${s.type}: ${s.value}')).toList(),
+          return Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: statistics.map((stat) => Expanded(
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Image.network(stat.teamLogo, width: 50, height: 50),
+                        Text(stat.teamName, style: TextStyle(fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                )).toList(),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: statistics.length,
+                  itemBuilder: (context, index) {
+                    final stat = statistics[index];
+                    return ListTile(
+                      title: Text(stat.teamName),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: stat.statistics.map((s) => Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(s.type),
+                            _buildStatValue(s.value),
+                          ],
+                        )).toList(),
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
+              ),
+            ],
           );
         },
       ),
     );
+  }
+
+  Widget _buildStatValue(dynamic value) {
+
+    // このメソッドは、値を適切に表示するためのものです。
+    if (value == null) return Text('-'); // null値の場合はハイフンを表示
+    if (value is int) {
+      // 値が整数の場合、そのまま強調して表示
+      return Text(
+        value.toString(),
+        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+      );
+    } else {
+      // 値が数字で表現できない場合は、元の文字列として表示
+      String stringValue = value.toString();
+      int? intValue = int.tryParse(stringValue);
+      if (intValue != null) {
+        // 文字列が整数に変換できる場合は変換して表示
+        return Text(
+          intValue.toString(),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+        );
+      } else {
+        // 文字列が整数に変換できない場合はそのまま表示
+        return Text(stringValue);
+      }
+    }
   }
 }

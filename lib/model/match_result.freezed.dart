@@ -20,6 +20,7 @@ MatchResult _$MatchResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MatchResult {
+  int get id => throw _privateConstructorUsedError;
   String get homeTeam => throw _privateConstructorUsedError;
   String get awayTeam => throw _privateConstructorUsedError;
   int? get homeScore => throw _privateConstructorUsedError; // nullを許容
@@ -42,7 +43,8 @@ abstract class $MatchResultCopyWith<$Res> {
       _$MatchResultCopyWithImpl<$Res, MatchResult>;
   @useResult
   $Res call(
-      {String homeTeam,
+      {int id,
+      String homeTeam,
       String awayTeam,
       int? homeScore,
       int? awayScore,
@@ -65,6 +67,7 @@ class _$MatchResultCopyWithImpl<$Res, $Val extends MatchResult>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? homeTeam = null,
     Object? awayTeam = null,
     Object? homeScore = freezed,
@@ -75,6 +78,10 @@ class _$MatchResultCopyWithImpl<$Res, $Val extends MatchResult>
     Object? kickoffTime = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       homeTeam: null == homeTeam
           ? _value.homeTeam
           : homeTeam // ignore: cast_nullable_to_non_nullable
@@ -120,7 +127,8 @@ abstract class _$$MatchResultImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String homeTeam,
+      {int id,
+      String homeTeam,
       String awayTeam,
       int? homeScore,
       int? awayScore,
@@ -141,6 +149,7 @@ class __$$MatchResultImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? homeTeam = null,
     Object? awayTeam = null,
     Object? homeScore = freezed,
@@ -151,6 +160,10 @@ class __$$MatchResultImplCopyWithImpl<$Res>
     Object? kickoffTime = null,
   }) {
     return _then(_$MatchResultImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       homeTeam: null == homeTeam
           ? _value.homeTeam
           : homeTeam // ignore: cast_nullable_to_non_nullable
@@ -191,7 +204,8 @@ class __$$MatchResultImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MatchResultImpl implements _MatchResult {
   _$MatchResultImpl(
-      {required this.homeTeam,
+      {required this.id,
+      required this.homeTeam,
       required this.awayTeam,
       this.homeScore,
       this.awayScore,
@@ -203,6 +217,8 @@ class _$MatchResultImpl implements _MatchResult {
   factory _$MatchResultImpl.fromJson(Map<String, dynamic> json) =>
       _$$MatchResultImplFromJson(json);
 
+  @override
+  final int id;
   @override
   final String homeTeam;
   @override
@@ -225,7 +241,7 @@ class _$MatchResultImpl implements _MatchResult {
 
   @override
   String toString() {
-    return 'MatchResult(homeTeam: $homeTeam, awayTeam: $awayTeam, homeScore: $homeScore, awayScore: $awayScore, homeTeamLogo: $homeTeamLogo, awayTeamLogo: $awayTeamLogo, duration: $duration, kickoffTime: $kickoffTime)';
+    return 'MatchResult(id: $id, homeTeam: $homeTeam, awayTeam: $awayTeam, homeScore: $homeScore, awayScore: $awayScore, homeTeamLogo: $homeTeamLogo, awayTeamLogo: $awayTeamLogo, duration: $duration, kickoffTime: $kickoffTime)';
   }
 
   @override
@@ -233,6 +249,7 @@ class _$MatchResultImpl implements _MatchResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MatchResultImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.homeTeam, homeTeam) ||
                 other.homeTeam == homeTeam) &&
             (identical(other.awayTeam, awayTeam) ||
@@ -253,8 +270,8 @@ class _$MatchResultImpl implements _MatchResult {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, homeTeam, awayTeam, homeScore,
-      awayScore, homeTeamLogo, awayTeamLogo, duration, kickoffTime);
+  int get hashCode => Object.hash(runtimeType, id, homeTeam, awayTeam,
+      homeScore, awayScore, homeTeamLogo, awayTeamLogo, duration, kickoffTime);
 
   @JsonKey(ignore: true)
   @override
@@ -272,7 +289,8 @@ class _$MatchResultImpl implements _MatchResult {
 
 abstract class _MatchResult implements MatchResult {
   factory _MatchResult(
-      {required final String homeTeam,
+      {required final int id,
+      required final String homeTeam,
       required final String awayTeam,
       final int? homeScore,
       final int? awayScore,
@@ -284,6 +302,8 @@ abstract class _MatchResult implements MatchResult {
   factory _MatchResult.fromJson(Map<String, dynamic> json) =
       _$MatchResultImpl.fromJson;
 
+  @override
+  int get id;
   @override
   String get homeTeam;
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:footballnews/api/FirestoreService.dart';
+import 'package:footballnews/match_detail_screen.dart';
 import 'package:footballnews/model/match_result.dart';
-import 'package:intl/intl.dart'; // 日付をフォーマットするために追加
-
+import 'package:intl/intl.dart'; 
 class MatchResultsScreen extends StatefulWidget {
   @override
   _MatchResultsScreenState createState() => _MatchResultsScreenState();
@@ -11,7 +11,7 @@ class MatchResultsScreen extends StatefulWidget {
 class _MatchResultsScreenState extends State<MatchResultsScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final FirestoreService _firestoreService = FirestoreService();
-  final List<String> _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  final List<String> _months = ['August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July'];
   List<MatchResult>? allResults;
 
   @override
@@ -90,7 +90,12 @@ class _MatchResultsScreenState extends State<MatchResultsScreen> with SingleTick
                           ],
                         ),
                         onTap: () {
-                          // Tap action can be added here for more details or actions
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MatchDetailScreen(fixtureId: match.id.toString()),
+                            ),
+                          );
                         },
                       ),
                     );

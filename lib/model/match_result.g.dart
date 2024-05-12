@@ -8,6 +8,7 @@ part of 'match_result.dart';
 
 _$MatchResultImpl _$$MatchResultImplFromJson(Map<String, dynamic> json) =>
     _$MatchResultImpl(
+      id: (json['id'] as num).toInt(),
       homeTeam: json['homeTeam'] as String,
       awayTeam: json['awayTeam'] as String,
       homeScore: (json['homeScore'] as num?)?.toInt(),
@@ -20,6 +21,7 @@ _$MatchResultImpl _$$MatchResultImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$MatchResultImplToJson(_$MatchResultImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'homeTeam': instance.homeTeam,
       'awayTeam': instance.awayTeam,
       'homeScore': instance.homeScore,

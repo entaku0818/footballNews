@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.entaku.footballnews">
     <application
         android:label="footballnews"
         android:name="${applicationName}"

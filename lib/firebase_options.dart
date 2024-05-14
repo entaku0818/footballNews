@@ -64,7 +64,7 @@ class DefaultFirebaseOptions {
     projectId: 'the-pitch-post',
     storageBucket: 'the-pitch-post.appspot.com',
     iosClientId: '981423300181-0a328l3ionmoeaft7aiv9m7d1n9rt7fq.apps.googleusercontent.com',
-    iosBundleId: 'com.example.footballnews',
+    iosBundleId: 'com.entaku.footballnews',
   );
 
 }

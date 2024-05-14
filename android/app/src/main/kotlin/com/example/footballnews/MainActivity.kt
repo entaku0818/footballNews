@@ -1,4 +1,4 @@
-package com.example.footballnews
+package com.entaku.footballnews
 
 import io.flutter.embedding.android.FlutterActivity
 
